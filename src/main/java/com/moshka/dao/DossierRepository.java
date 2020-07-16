@@ -1,7 +1,9 @@
 package com.moshka.dao;
 
-import com.moshka.model.Dossier;
-import org.springframework.data.repository.CrudRepository;
+import com.moshka.model.DossierModel;
+import org.springframework.stereotype.Repository;
 
-public interface DossierRepository  extends CrudRepository<Dossier,Long> {
+@Repository
+public interface DossierRepository  extends GeneralRepository<DossierModel,Long> {
+
 }

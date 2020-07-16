@@ -33,6 +33,6 @@ public class PlaintiffModel {
     private String address;
 
     @OneToMany(mappedBy = "plaintiff",cascade = CascadeType.REMOVE)
-    private List<Dossier> dossierList = new ArrayList<>();
+    private List<DossierModel> dossierList = new ArrayList<>();
 
 }

@@ -28,6 +28,7 @@ public class BicycleChallengeApplication implements CommandLineRunner {
 	}
 
 	private static final Logger LOGGER = LoggerFactory.getLogger(BicycleChallengeApplication.class.getName());
+
 	@Autowired
 	private Environment environment;
 

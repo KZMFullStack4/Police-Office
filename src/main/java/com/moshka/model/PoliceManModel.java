@@ -35,7 +35,7 @@ public class PoliceManModel {
 
 
     @OneToOne(cascade = CascadeType.PERSIST)
-    private Dossier dossierId;
+    private DossierModel dossierId;
 
     @Column(name = "police_man_status",nullable = false)
     @Enumerated(value = EnumType.STRING)
