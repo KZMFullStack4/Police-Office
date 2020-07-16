@@ -8,6 +8,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.core.env.Environment;
@@ -18,6 +19,7 @@ import javax.sql.DataSource;
 import java.io.IOException;
 import java.util.Properties;
 
+@EnableAutoConfiguration
 @SpringBootApplication
 public class BicycleChallengeApplication implements CommandLineRunner {
 
@@ -40,6 +42,7 @@ public class BicycleChallengeApplication implements CommandLineRunner {
 		LOGGER.info("## getDatasource : "+dataSource);
 		return dataSource;
 	}
+	//sdsda
 
 
 	@Autowired
@@ -72,6 +75,8 @@ public class BicycleChallengeApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-		LOGGER.info(" Application is running ..... Now");
+		LOGGER.info(" Application is running ..... Now " +
+				"\n ***** It should be consider we can add more attributes to our Models depending on our requirements ,Its Just Dummy " +
+				" for qualification purposes  **** ");
 	}
 }
