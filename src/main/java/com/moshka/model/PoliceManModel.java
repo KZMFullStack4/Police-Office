@@ -42,16 +42,15 @@ public class PoliceManModel {
     private PoliceManStatus policeManStatus;
 
 
-    @ManyToMany(cascade = CascadeType.PERSIST)
-    @JoinTable(
-            name="tbl_police_office_and_police_man",
-            joinColumns = {
-                    @JoinColumn(name = "police_man_id")
-            },
-            schema = "bicycle",
-            inverseJoinColumns = @JoinColumn(name = "police_office_id")
-    )
-    private List<PoliceOfficeModel> policeOfficeId;
+    public static PoliceManModel update(PoliceManModel old,PoliceManModel newModel){
+        old.setName(newModel.getName());
+        old.setFathersName(newModel.getFathersName());
+        old.setFamily(newModel.getFamily());
+        old.setPersonnel_code(newModel.getPersonnel_code());
+        old.setDossierId(newModel.getDossierId());
+        old.setPoliceManStatus(newModel.getPoliceManStatus());
+        return old;
+    }
 
 
 }

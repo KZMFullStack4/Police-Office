@@ -19,6 +19,5 @@ public interface GeneralRepository<T,PK extends Serializable> {
 
     void delete(PK id);
 
-    Session getCurrentSession();
 
 }

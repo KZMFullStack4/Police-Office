@@ -36,7 +36,7 @@ public class GeneralRepositoryImpl<T,PK extends  Serializable> implements Genera
 
     @Override
     public void save(T model) {
-        getCurrentSession().save(model);
+        getCurrentSession().saveOrUpdate(model);
     }
 
     @Override
@@ -64,7 +64,6 @@ public class GeneralRepositoryImpl<T,PK extends  Serializable> implements Genera
         getCurrentSession().delete(id);
     }
 
-    @Override
     public Session getCurrentSession() {
         return sessionFactory.getCurrentSession();
     }

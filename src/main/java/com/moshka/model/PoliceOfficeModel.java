@@ -4,6 +4,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.List;
 
 //It should be consider we can add more attributes to our Models depending on our requirements // Its Just Dummy
 @Entity
@@ -27,5 +28,17 @@ public class PoliceOfficeModel {
 
     @Column(name = "boss_name",nullable = false)
     private String bossName;
+
+
+    @JoinTable(
+            name="tbl_police_office_and_police_man",
+            joinColumns = {
+                    @JoinColumn(name = "police_man_id")
+            },
+            schema = "bicycle",
+            inverseJoinColumns = @JoinColumn(name = "police_office_id")
+    )
+    @ManyToMany(cascade = CascadeType.PERSIST)
+    private List<PoliceManModel> policeMan;
 
 }

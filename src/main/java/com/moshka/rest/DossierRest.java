@@ -34,11 +34,16 @@ public class DossierRest {
         PoliceManModel policeManModel = policeManService.getById(dto.getPoliceManId());
         PlaintiffModel plaintiffModel = plaintiffService.getById(dto.getPlaintiffId());
         DossierModel model =DossierDto.toModel(dto);
+        if(policeManModel!=null){
+            model.setDossierStatus(DossierStatus.CLOSED);
+        }
         model.setPoliceManId(policeManModel);
         model.setPlaintiffId(plaintiffModel);
         model.setCreationDate(new Date().toString());
         model.setCreationTime(String.valueOf(new Date().getTime()));
-        model.setDossierStatus(DossierStatus.NOT_FINISHED);
+
+
+
         return dossierController.add(model);
     }
 
@@ -52,7 +57,7 @@ public class DossierRest {
         model.setPlaintiffId(plaintiffModel);
         model.setCreationDate(new Date().toString());
         model.setCreationTime(String.valueOf(new Date().getTime()));
-        model.setDossierStatus(DossierStatus.NOT_FINISHED);
+        model.setDossierStatus(DossierStatus.CLOSED);
         return dossierController.update(model,id);
     }
 
