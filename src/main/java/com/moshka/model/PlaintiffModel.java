@@ -1,5 +1,6 @@
 package com.moshka.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -32,7 +33,17 @@ public class PlaintiffModel {
     @Column(name = "address",nullable = true)
     private String address;
 
-    @OneToMany(mappedBy = "plaintiff",cascade = CascadeType.REMOVE)
-    private List<DossierModel> dossierList = new ArrayList<>();
+    @JsonIgnore
+    @OneToMany(mappedBy = "plaintiffId",cascade = CascadeType.REMOVE)
+    private List<DossierModel> dossierList ;
+
+    public static PlaintiffModel update(PlaintiffModel old, PlaintiffModel newModel){
+        old.setAddress(newModel.getAddress());
+        old.setDescription(newModel.getDescription());
+        old.setFamily(newModel.getFamily());
+        old.setName(newModel.getName());
+        old.setNationalCode(newModel.getNationalCode());
+        return  old;
+    }
 
 }

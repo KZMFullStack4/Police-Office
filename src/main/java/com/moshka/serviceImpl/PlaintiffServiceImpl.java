@@ -1,8 +1,10 @@
 package com.moshka.serviceImpl;
 
-import com.moshka.daoImpl.GeneralRepositoryImpl;
-import com.moshka.model.DossierModel;
+import com.moshka.dao.GeneralRepositoryImpl;
 import com.moshka.model.PlaintiffModel;
+import org.springframework.stereotype.Service;
 
-public class PlaintiffServiceImpl extends GeneralRepositoryImpl<PlaintiffModel,Long> {
+@Service
+public class PlaintiffServiceImpl extends GeneralServiceImpl<PlaintiffModel,Long> {
+
 }

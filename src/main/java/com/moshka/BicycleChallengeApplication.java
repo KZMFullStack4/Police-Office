@@ -10,6 +10,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.orm.jpa.HibernateJpaAutoConfiguration;
 import org.springframework.context.annotation.Bean;
 import org.springframework.core.env.Environment;
 import org.springframework.orm.hibernate5.HibernateTransactionManager;
@@ -17,9 +18,10 @@ import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
 
 import javax.sql.DataSource;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.Properties;
 
-@EnableAutoConfiguration
+@EnableAutoConfiguration(exclude = HibernateJpaAutoConfiguration.class)
 @SpringBootApplication
 public class BicycleChallengeApplication implements CommandLineRunner {
 
@@ -73,7 +75,17 @@ public class BicycleChallengeApplication implements CommandLineRunner {
 		return hibernateTransactionManager;
 	}
 
+	@Bean("dateFormat")
+	public SimpleDateFormat getTimeFormat(){
+		final String TIME_FORMAT = "HH:mm:ss";
+		return new SimpleDateFormat(TIME_FORMAT);
+	}
 
+	@Bean("timeFormat")
+	public SimpleDateFormat getDateFormat(){
+		final String DATE_FORMAT = "yyyy/MM/dd";
+		return new SimpleDateFormat(DATE_FORMAT);
+	}
 	@Override
 	public void run(String... args) throws Exception {
 		LOGGER.info(" Application is running ..... Now " +

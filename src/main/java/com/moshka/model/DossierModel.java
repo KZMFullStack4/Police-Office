@@ -7,7 +7,6 @@ import javax.persistence.*;
 import javax.persistence.Table;
 import java.util.Date;
 
-//Parvandeh
 @Entity
 @Data
 @Table(name="tbl_dossier",schema = "bicycle")
@@ -43,8 +42,10 @@ public class DossierModel {
     @Column(name = "dossier_Status")
     private DossierStatus dossierStatus ;
 
-    @OneToOne(mappedBy = "dossierId")
+
+    @OneToOne(cascade = CascadeType.PERSIST)
     private PoliceManModel policeManId;
+
 
     @JoinColumn(name = "plaintiff_id")
     @ManyToOne(cascade = CascadeType.PERSIST)

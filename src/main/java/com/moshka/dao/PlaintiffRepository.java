@@ -2,6 +2,12 @@ package com.moshka.dao;
 
 import com.moshka.model.PlaintiffModel;
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.stereotype.Repository;
 
-public interface PlaintiffRepository extends CrudRepository<PlaintiffModel,Long> {
+@Repository
+public class PlaintiffRepository extends GeneralRepositoryImpl<PlaintiffModel,Long> {
+
+    public  PlaintiffRepository(){
+        super(PlaintiffModel.class);
+    }
 }

@@ -1,9 +1,11 @@
 package com.moshka.helper;
 
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.util.List;
 
+@NoArgsConstructor
 @Data
 public class RestResponse {
     public RestResponse(String message){

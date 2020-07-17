@@ -1,9 +1,7 @@
 package com.moshka.serviceImpl;
 
-import com.moshka.dao.DossierRepository;
 import com.moshka.dao.GeneralRepository;
-import com.moshka.daoImpl.GeneralRepositoryImpl;
-import com.moshka.model.DossierModel;
+import com.moshka.dao.GeneralRepositoryImpl;
 import com.moshka.service.GeneralService;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -11,14 +9,30 @@ import java.io.Serializable;
 import java.util.List;
 
 
+
 public class GeneralServiceImpl<T, PK extends Serializable> implements GeneralService<T, PK>{
 
-    private GeneralRepositoryImpl<T,PK> generalRepository;
-
     @Autowired
-    public GeneralServiceImpl(GeneralRepositoryImpl<T,PK> generalRepository){
-        this.generalRepository=generalRepository;
+    protected GeneralRepository<T, PK> generalRepository;
+
+    public GeneralServiceImpl() {
     }
+
+    public GeneralServiceImpl(GeneralRepository<T, PK> generalRepository) {
+        this.generalRepository = generalRepository;
+
+    }
+
+
+//    private GeneralRepositoryImpl<T,PK> generalRepository;
+
+//    public GeneralServiceImpl() {
+//    }
+//
+//    @Autowired
+//    public GeneralServiceImpl(GeneralRepositoryImpl<T,PK> generalRepository){
+//        this.generalRepository=generalRepository;
+//    }
 
     @Override
     public void save(T model) {

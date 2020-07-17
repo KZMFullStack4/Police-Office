@@ -2,7 +2,9 @@ package com.moshka.rest;
 
 import com.moshka.controller.DossierController;
 import com.moshka.dto.DossierDto;
+import com.moshka.dto.TotalReportDto;
 import com.moshka.enums.DossierStatus;
+import com.moshka.enums.PoliceManStatus;
 import com.moshka.model.DossierModel;
 import com.moshka.model.PlaintiffModel;
 import com.moshka.model.PoliceManModel;
@@ -29,6 +31,7 @@ public class DossierRest {
         this.plaintiffService = plaintiffService;
     }
 
+
     @PostMapping("/add")
     public Object add(@RequestBody  DossierDto dto){
         PoliceManModel policeManModel = policeManService.getById(dto.getPoliceManId());
@@ -36,13 +39,14 @@ public class DossierRest {
         DossierModel model =DossierDto.toModel(dto);
         if(policeManModel!=null){
             model.setDossierStatus(DossierStatus.CLOSED);
+            policeManService.changePoliceManStatus(policeManModel.getId(), PoliceManStatus.BUSY);
+            model.setPoliceManId(policeManModel);
+        }else{
+            model.setDossierStatus(DossierStatus.OPENED);
         }
-        model.setPoliceManId(policeManModel);
         model.setPlaintiffId(plaintiffModel);
         model.setCreationDate(new Date().toString());
         model.setCreationTime(String.valueOf(new Date().getTime()));
-
-
 
         return dossierController.add(model);
     }
@@ -53,11 +57,15 @@ public class DossierRest {
         PoliceManModel policeManModel = policeManService.getById(dto.getPoliceManId());
         PlaintiffModel plaintiffModel = plaintiffService.getById(dto.getPlaintiffId());
         DossierModel model =DossierDto.toModel(dto);
-        model.setPoliceManId(policeManModel);
+        if(policeManModel!=null){
+            model.setDossierStatus(DossierStatus.CLOSED);
+            policeManService.changePoliceManStatus(policeManModel.getId(), PoliceManStatus.BUSY);
+            model.setPoliceManId(policeManModel);
+        }
+        model.setDossierStatus(DossierStatus.OPENED);
         model.setPlaintiffId(plaintiffModel);
         model.setCreationDate(new Date().toString());
         model.setCreationTime(String.valueOf(new Date().getTime()));
-        model.setDossierStatus(DossierStatus.CLOSED);
         return dossierController.update(model,id);
     }
 
@@ -71,4 +79,23 @@ public class DossierRest {
         return dossierController.getAll();
     }
 
+    @GetMapping("/get-all-closed-opened-dossiers/{opened}")
+    public Object getAllClosedDossiers(@PathVariable boolean opened){
+        return dossierController.getAllOpenedOrClosedDossiers(opened);
+    }
+
+    @PostMapping("/close-dossier/{id}")
+    public Object closeDossier(@PathVariable Long id){
+        return dossierController.closeDossier(id);
+    }
+    @PostMapping("/allocate-dossier/{dossierId}/{policeManId}")
+    public Object allocateDossier(@PathVariable Long dossierId,@PathVariable Long policeManId){
+        return dossierController.allocateDossier(dossierId,policeManId);
+    }
+
+    @PostMapping("/get-total-report")
+    public  Object getTotalReport(@RequestBody TotalReportDto dto){
+        return  dossierController.getTotalReport(dto);
+    }
 }
+

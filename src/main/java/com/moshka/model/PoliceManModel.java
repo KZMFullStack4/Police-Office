@@ -1,5 +1,7 @@
 package com.moshka.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.moshka.dto.PoliceManDto;
 import com.moshka.enums.PoliceManStatus;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -13,6 +15,13 @@ import java.util.List;
 @NoArgsConstructor
 public class PoliceManModel {
 
+    public PoliceManModel(PoliceManDto dto){
+        this.name=dto.getName();
+        this.family=dto.getFamily();
+        this.fathersName=dto.getFathersName();
+        this.personnel_code=dto.getPersonnel_code();
+        this.policeManStatus=PoliceManStatus.FREE;
+    }
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -33,8 +42,8 @@ public class PoliceManModel {
     @Column(name = "fathers_name",nullable = true)
     private String fathersName;
 
-
-    @OneToOne(cascade = CascadeType.PERSIST)
+    @JsonIgnore
+    @OneToOne(mappedBy = "policeManId")
     private DossierModel dossierId;
 
     @Column(name = "police_man_status",nullable = false)

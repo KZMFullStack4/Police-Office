@@ -1,6 +1,4 @@
-package com.moshka.daoImpl;
-
-import com.moshka.dao.GeneralRepository;
+package com.moshka.dao;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.slf4j.Logger;
@@ -18,20 +16,17 @@ public class GeneralRepositoryImpl<T,PK extends  Serializable> implements Genera
 
     protected final Logger LOGGER = LoggerFactory.getLogger(getClass().getName());
 
-    public GeneralRepositoryImpl(){
-
-    }
-
+    @Autowired
     @Qualifier("sessionFactory")
-    @Autowired
-    private SessionFactory sessionFactory;
+    public SessionFactory sessionFactory;
 
-    private  Class<T> persistentClass;
+    private final Class<T> persistentClass;
 
-    @Autowired
-    public  GeneralRepositoryImpl(Class<T> persistentClass){
-        this.persistentClass=persistentClass;
+    public GeneralRepositoryImpl(final Class<T> persistentClass) {
+        this.persistentClass = persistentClass;
     }
+
+
 
 
     @Override

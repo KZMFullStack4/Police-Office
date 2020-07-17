@@ -1,7 +1,9 @@
 package com.moshka.serviceImpl;
 
-import com.moshka.daoImpl.GeneralRepositoryImpl;
+import com.moshka.dao.GeneralRepositoryImpl;
 import com.moshka.model.PoliceOfficeModel;
+import org.springframework.stereotype.Service;
 
-public class PoliceOfficeServiceImpl extends GeneralRepositoryImpl<PoliceOfficeModel,Long> {
+@Service
+public class PoliceOfficeServiceImpl extends GeneralServiceImpl<PoliceOfficeModel,Long> {
 }
