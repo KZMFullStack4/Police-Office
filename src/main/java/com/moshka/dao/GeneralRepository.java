@@ -1,7 +1,5 @@
 package com.moshka.dao;
 
-import org.hibernate.Session;
-
 import java.io.Serializable;
 import java.util.List;
 

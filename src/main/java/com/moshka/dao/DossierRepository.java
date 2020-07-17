@@ -16,11 +16,13 @@ import java.util.List;
 
 @Repository
 public class DossierRepository  extends GeneralRepositoryImpl<DossierModel,Long> {
+
     @Autowired
     private PoliceManRepository policeManRepository;
     public DossierRepository(){
         super(DossierModel.class);
     }
+
     public List<DossierModel>getAllOpenedOrClosedDossiers(boolean opened){
         Criteria criteria = getCurrentSession().createCriteria(DossierModel.class);
         if(opened){
@@ -31,6 +33,7 @@ public class DossierRepository  extends GeneralRepositoryImpl<DossierModel,Long>
             return criteria.list();
         }
     }
+
     public Integer closeDossier(Long dossierId){
        int changed = super.getCurrentSession().createQuery("update DossierModel set dossierStatus=:value where id=:id ")
                 .setParameter("value", DossierStatus.CLOSED)
@@ -41,9 +44,9 @@ public class DossierRepository  extends GeneralRepositoryImpl<DossierModel,Long>
             policeManRepository.changePoliceManStatus(policeManId, PoliceManStatus.FREE);
         }
         //By this line , when a dossier is closed the police of that dossier should become free in order to look into other dossiers
-
         return changed;
     }
+
     public Integer allocateDossiers(Long dossierId,Long policeManId){
        getCurrentSession().createQuery("update DossierModel set policeManId.id=:policeMan where id=:id ")
                 .setParameter("policeMan" ,policeManId)
@@ -54,7 +57,6 @@ public class DossierRepository  extends GeneralRepositoryImpl<DossierModel,Long>
     }
 
     public List<TotalReportResponse>getTotalReport(TotalReportDto reportDto){
-
         StringBuilder query = new StringBuilder(" ");
         query.append("select creation_date,\n" +
                 "creation_time,\n" +
@@ -118,11 +120,11 @@ public class DossierRepository  extends GeneralRepositoryImpl<DossierModel,Long>
             response.setPoliceName(mapValue[5] == null ? "" : mapValue[5].toString());
             response.setPoliceFamily( mapValue[6] == null ? "" : mapValue[6].toString());
             response.setPoliceFathersName(mapValue[7] == null ? "" : mapValue[7].toString());
-            response.setPolicePersonnel_code(mapValue[8] == null ? "" : mapValue[8].toString());
+            response.setPolicePersonnelCode(mapValue[8] == null ? "" : mapValue[8].toString());
             response.setPoliceManStatus(mapValue[9] == null ? "" : mapValue[9].toString());
-            response.setPName(mapValue[10] == null ? "" : mapValue[10].toString());
-            response.setPFamily(mapValue[11] == null ? "" : mapValue[11].toString());
-            response.setPNationalCode(mapValue[12] == null ? "" : mapValue[12].toString());
+            response.setPlaintiffName(mapValue[10] == null ? "" : mapValue[10].toString());
+            response.setPlaintiffFamily(mapValue[11] == null ? "" : mapValue[11].toString());
+            response.setPlaintiffNationalCode(mapValue[12] == null ? "" : mapValue[12].toString());
             return response;
         }).forEach(finalResponseList::add);
 

@@ -46,7 +46,6 @@ public class DossierController {
         }
     }
 
-
     public RestResponse update(DossierModel model, Long id) {
         RestResponse response = new RestResponse();
         DossierModel oldModel = dossierService.getById(id);
@@ -66,7 +65,6 @@ public class DossierController {
         }
     }
 
-
     public RestResponse delete(Long id) {
         RestResponse response = new RestResponse();
         DossierModel model = dossierService.getById(id);
@@ -81,7 +79,6 @@ public class DossierController {
             return response;
         }
     }
-
 
     public RestResponse getAll() {
         RestResponse response = new RestResponse();
@@ -136,7 +133,6 @@ public class DossierController {
             return response;
         }
     }
-
 
     public RestResponse closeDossier(Long dossierId){
         RestResponse response = new RestResponse();

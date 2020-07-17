@@ -7,7 +7,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.util.List;
 
 @Entity
 @Data
@@ -26,18 +25,14 @@ public class PoliceManModel {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-
     @Column(name = "name",nullable = false)
     private String name;
-
 
     @Column(name = "family",nullable = false)
     private String family;
 
-
     @Column(name = "personnel_code",nullable = false,unique = true)
     private String personnel_code;
-
 
     @Column(name = "fathers_name",nullable = true)
     private String fathersName;
@@ -49,7 +44,6 @@ public class PoliceManModel {
     @Column(name = "police_man_status",nullable = false)
     @Enumerated(value = EnumType.STRING)
     private PoliceManStatus policeManStatus;
-
 
     public static PoliceManModel update(PoliceManModel old,PoliceManModel newModel){
         old.setName(newModel.getName());

@@ -2,10 +2,10 @@ package com.moshka.model;
 
 import com.moshka.dto.DossierDto;
 import com.moshka.enums.DossierStatus;
-import lombok.*;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 import javax.persistence.*;
-import javax.persistence.Table;
-import java.util.Date;
 
 @Entity
 @Data
@@ -30,10 +30,8 @@ public class DossierModel {
     @Column(name = "description",nullable = true)
     private String description;
 
-
     @Column(name = "creation_date",nullable = false)
     private String creationDate;
-
 
     @Column(name = "creation_time",nullable = true)
     private String creationTime;
@@ -42,10 +40,8 @@ public class DossierModel {
     @Column(name = "dossier_Status")
     private DossierStatus dossierStatus ;
 
-
     @OneToOne(cascade = CascadeType.PERSIST)
     private PoliceManModel policeManId;
-
 
     @JoinColumn(name = "plaintiff_id")
     @ManyToOne(cascade = CascadeType.PERSIST)

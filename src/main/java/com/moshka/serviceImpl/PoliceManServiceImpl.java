@@ -16,8 +16,8 @@ public class PoliceManServiceImpl extends GeneralServiceImpl<PoliceManModel,Long
     private PoliceManRepository policeManRepository;
 
     @Override
-    public Integer changePoliceManStatus(Long id, PoliceManStatus status) {
-      return  policeManRepository.changePoliceManStatus(id,status);
+    public void changePoliceManStatus(Long id, PoliceManStatus status) {
+        policeManRepository.changePoliceManStatus(id, status);
     }
 
     @Override

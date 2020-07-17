@@ -1,5 +1,6 @@
 package com.moshka.controller;
 
+import com.moshka.enums.PoliceManStatus;
 import com.moshka.helper.RestResponse;
 import com.moshka.model.PoliceManModel;
 import com.moshka.serviceImpl.PoliceManServiceImpl;
@@ -18,7 +19,6 @@ public class PoliceManController {
         this.policeManService = policeManService;
     }
 
-
     public RestResponse add(PoliceManModel model) {
         RestResponse response = new RestResponse();
         try {
@@ -32,7 +32,6 @@ public class PoliceManController {
             return response;
         }
     }
-
 
     public RestResponse update(PoliceManModel model, Long id) {
         RestResponse response = new RestResponse();
@@ -51,7 +50,6 @@ public class PoliceManController {
         }
     }
 
-
     public RestResponse delete(Long id) {
         RestResponse response = new RestResponse();
         PoliceManModel model = policeManService.getById(id);
@@ -67,11 +65,41 @@ public class PoliceManController {
         }
     }
 
-
     public RestResponse getAll() {
         RestResponse response = new RestResponse();
         try {
             response.setListResponse((List<Object>) (Object) policeManService.getAll());
+            response.setMessage(new RestResponse("Okay !").getMessage());
+            response.setStatusCode(200);
+            response.setSuccess(true);
+            return response;
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            response.setStatusCode(500);
+            response.setSuccess(false);
+            response.setMessage(" Server Exception occurred !");
+            return response;
+        }
+    }
+
+    public RestResponse changePoliceManStatus(Long id, PoliceManStatus status) {
+        RestResponse response = new RestResponse();
+        try {
+            policeManService.changePoliceManStatus(id,status);
+            return new RestResponse("Okay !");
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            response.setStatusCode(500);
+            response.setSuccess(false);
+            response.setMessage(" Server Exception occurred !");
+            return response;
+        }
+    }
+
+    public RestResponse getBusyOrFreePolices(boolean busy) {
+        RestResponse response = new RestResponse();
+        try {
+            response.setListResponse((List<Object>) (Object) policeManService.getBusyOrFreePolices(busy));
             response.setMessage(new RestResponse("Okay !").getMessage());
             response.setStatusCode(200);
             response.setSuccess(true);

@@ -1,6 +1,5 @@
 package com.moshka;
 
-
 import com.zaxxer.hikari.HikariDataSource;
 import org.hibernate.SessionFactory;
 import org.slf4j.Logger;
@@ -34,7 +33,6 @@ public class BicycleChallengeApplication implements CommandLineRunner {
 	@Autowired
 	private Environment environment;
 
-
 	@Bean("dataSource")
 	public DataSource getDataSource(){
 		HikariDataSource dataSource = new HikariDataSource();
@@ -45,8 +43,6 @@ public class BicycleChallengeApplication implements CommandLineRunner {
 		LOGGER.info("## getDatasource : "+dataSource);
 		return dataSource;
 	}
-	//sdsda
-
 
 	@Autowired
 	@Bean("sessionFactory")
@@ -86,6 +82,7 @@ public class BicycleChallengeApplication implements CommandLineRunner {
 		final String DATE_FORMAT = "yyyy/MM/dd";
 		return new SimpleDateFormat(DATE_FORMAT);
 	}
+
 	@Override
 	public void run(String... args) throws Exception {
 		LOGGER.info(" Application is running ..... Now " +

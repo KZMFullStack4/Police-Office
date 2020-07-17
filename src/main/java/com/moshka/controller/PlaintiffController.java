@@ -32,7 +32,6 @@ public class PlaintiffController {
         }
     }
 
-
     public RestResponse update(PlaintiffModel model, Long id) {
         RestResponse response = new RestResponse();
         PlaintiffModel oldModel = plaintiffService.getById(id);
@@ -50,7 +49,6 @@ public class PlaintiffController {
         }
     }
 
-
     public RestResponse delete(Long id) {
         RestResponse response = new RestResponse();
         PlaintiffModel model = plaintiffService.getById(id);
@@ -65,7 +63,6 @@ public class PlaintiffController {
             return response;
         }
     }
-
 
     public RestResponse getAll() {
         RestResponse response = new RestResponse();

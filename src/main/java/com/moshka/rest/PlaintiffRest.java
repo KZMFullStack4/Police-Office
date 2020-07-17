@@ -21,7 +21,6 @@ public class PlaintiffRest {
         return plaintiffController.add(model);
     }
 
-    
     @PostMapping("/update/{id}")
     public Object update(@RequestBody PlaintiffModel model,@PathVariable Long id){
         return plaintiffController.update(model,id);

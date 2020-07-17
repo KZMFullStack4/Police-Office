@@ -15,21 +15,20 @@ public class TotalReportResponse {
 
     private Integer plaintiffId;
 
-    private String pNationalCode;
+    private String plaintiffNationalCode;
 
-    private String pName;
+    private String plaintiffName;
 
-    private String pFamily;
+    private String plaintiffFamily;
 
     private String policeName;
 
     private String policeFamily;
 
-    private String policePersonnel_code;
+    private String policePersonnelCode;
 
     private String policeFathersName;
 
     private String policeManStatus;
-
 
 }

@@ -1,7 +1,6 @@
 package com.moshka.serviceImpl;
 
 import com.moshka.dao.GeneralRepository;
-import com.moshka.dao.GeneralRepositoryImpl;
 import com.moshka.service.GeneralService;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -22,17 +21,6 @@ public class GeneralServiceImpl<T, PK extends Serializable> implements GeneralSe
         this.generalRepository = generalRepository;
 
     }
-
-
-//    private GeneralRepositoryImpl<T,PK> generalRepository;
-
-//    public GeneralServiceImpl() {
-//    }
-//
-//    @Autowired
-//    public GeneralServiceImpl(GeneralRepositoryImpl<T,PK> generalRepository){
-//        this.generalRepository=generalRepository;
-//    }
 
     @Override
     public void save(T model) {

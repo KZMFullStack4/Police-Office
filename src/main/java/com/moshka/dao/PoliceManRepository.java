@@ -22,10 +22,10 @@ public class PoliceManRepository extends GeneralRepositoryImpl<PoliceManModel, L
     public List<PoliceManModel> getBusyOrFreePolices(boolean busy) {
         if (busy) {
             return getCurrentSession().createQuery("from PoliceManModel  where policeManStatus=:status ")
-                    .setParameter("status", PoliceManStatus.BUSY.toString()).list();
+                    .setParameter("status", PoliceManStatus.BUSY).list();
         } else {
             return getCurrentSession().createQuery("from PoliceManModel  where policeManStatus=:status ")
-                    .setParameter("status", PoliceManStatus.FREE.toString()).list();
+                    .setParameter("status", PoliceManStatus.FREE).list();
         }
 
     }

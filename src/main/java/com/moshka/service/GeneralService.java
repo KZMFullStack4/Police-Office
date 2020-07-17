@@ -1,10 +1,7 @@
 package com.moshka.service;
 
-import com.moshka.model.DossierModel;
-
 import java.io.Serializable;
 import java.util.List;
-import java.util.Optional;
 
 public interface GeneralService <T,PK extends Serializable>{
 

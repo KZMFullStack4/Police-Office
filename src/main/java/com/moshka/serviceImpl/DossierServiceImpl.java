@@ -1,7 +1,6 @@
 package com.moshka.serviceImpl;
 
 import com.moshka.dao.DossierRepository;
-import com.moshka.dao.GeneralRepositoryImpl;
 import com.moshka.dto.TotalReportDto;
 import com.moshka.dto.TotalReportResponse;
 import com.moshka.model.DossierModel;
@@ -16,7 +15,6 @@ public class DossierServiceImpl extends GeneralServiceImpl<DossierModel,Long> im
 
     @Autowired
     private DossierRepository dossierRepository;
-
 
     @Override
     public List<DossierModel> getAllOpenedOrClosedDossiers(boolean opened) {

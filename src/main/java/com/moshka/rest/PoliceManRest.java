@@ -47,4 +47,14 @@ public class PoliceManRest {
     public Object getAll(){
         return policeManController.getAll();
     }
+
+    @PostMapping("/change-police-status/{id}/{status}")
+    public Object changePoliceManStatus(@PathVariable Long id,@PathVariable PoliceManStatus status){
+        return policeManController.changePoliceManStatus(id,status);
+    }
+
+    @GetMapping("/get-busy-or-free-polices/{isBusy}")
+    public Object getBusyOrFreePolices( @PathVariable  boolean isBusy){
+        return policeManController.getBusyOrFreePolices(isBusy);
+    }
 }

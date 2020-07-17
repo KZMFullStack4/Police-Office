@@ -26,9 +26,6 @@ public class GeneralRepositoryImpl<T,PK extends  Serializable> implements Genera
         this.persistentClass = persistentClass;
     }
 
-
-
-
     @Override
     public void save(T model) {
         getCurrentSession().saveOrUpdate(model);

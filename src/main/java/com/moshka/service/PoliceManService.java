@@ -7,6 +7,7 @@ import java.util.List;
 
 public interface PoliceManService extends  GeneralService<PoliceManModel,Long> {
 
-    public Integer changePoliceManStatus(Long id, PoliceManStatus status) ;
+    public void changePoliceManStatus(Long id, PoliceManStatus status) ;
+
     public List<PoliceManModel> getBusyOrFreePolices(boolean busy) ;
 }

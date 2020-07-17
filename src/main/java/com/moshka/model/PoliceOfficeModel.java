@@ -12,7 +12,6 @@ import java.util.List;
 @Table(name="tbl_police_office",schema = "bicycle")
 @NoArgsConstructor
 public class PoliceOfficeModel {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -28,7 +27,6 @@ public class PoliceOfficeModel {
 
     @Column(name = "boss_name",nullable = false)
     private String bossName;
-
 
     @JoinTable(
             name="tbl_police_office_and_police_man",

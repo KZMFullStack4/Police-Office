@@ -31,7 +31,6 @@ public class DossierRest {
         this.plaintiffService = plaintiffService;
     }
 
-
     @PostMapping("/add")
     public Object add(@RequestBody  DossierDto dto){
         PoliceManModel policeManModel = policeManService.getById(dto.getPoliceManId());
@@ -61,11 +60,12 @@ public class DossierRest {
             model.setDossierStatus(DossierStatus.CLOSED);
             policeManService.changePoliceManStatus(policeManModel.getId(), PoliceManStatus.BUSY);
             model.setPoliceManId(policeManModel);
+        }else{
+            model.setDossierStatus(DossierStatus.OPENED);
         }
-        model.setDossierStatus(DossierStatus.OPENED);
         model.setPlaintiffId(plaintiffModel);
         model.setCreationDate(new Date().toString());
-        model.setCreationTime(String.valueOf(new Date().getTime()));
+        model.setCreationTime(new Date().toString());
         return dossierController.update(model,id);
     }
 
@@ -88,6 +88,7 @@ public class DossierRest {
     public Object closeDossier(@PathVariable Long id){
         return dossierController.closeDossier(id);
     }
+
     @PostMapping("/allocate-dossier/{dossierId}/{policeManId}")
     public Object allocateDossier(@PathVariable Long dossierId,@PathVariable Long policeManId){
         return dossierController.allocateDossier(dossierId,policeManId);
