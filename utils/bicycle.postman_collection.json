@@ -1,0 +1,310 @@
+{
+	"info": {
+		"_postman_id": "264d2ef7-bd55-4737-8bf9-234041c83b7e",
+		"name": "bicycle",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Dossier",
+			"item": [
+				{
+					"name": "Add",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"dossierNumber\":\"Saeed Kazemi \",\n    \"description\":\"No Desc\",\n    \"policeManId\":1,\n    \"plaintiffId\":1\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/dossier/add",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"dossier",
+								"add"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/dossier/delete/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"dossier",
+								"delete",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/dossier/get-all",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"dossier",
+								"get-all"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"dossierNumber\":\"Saeed Kazemi 22\",\n    \"description\":\"No Desc 22\",\n    \"creationDate\":\"2020/12/22\",\n    \"creationTime\":\"12:00:22\",\n    \"policeManId\":1,\n    \"plaintiffId\":1\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/dossier/update/2",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"dossier",
+								"update",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get-opened-or-closed",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/dossier/get-all-closed-opened-dossiers/false",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"dossier",
+								"get-all-closed-opened-dossiers",
+								"false"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Close a dossier",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/dossier/close-dossier/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"dossier",
+								"close-dossier",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Allocate dossier",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/dossier/allocate-dossier/{dossierId}/{policeManId}",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"dossier",
+								"allocate-dossier",
+								"{dossierId}",
+								"{policeManId}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Total Report",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"isClosedFlag\":0,\n    \"isBusyFlag\":2\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/dossier/get-total-report",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"dossier",
+								"get-total-report"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Plaintiff",
+			"item": [
+				{
+					"name": "Add",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\":\"Mohammad\",\n    \"family\":\"Hosseini\",\n    \"nationalCode\":\"56465115\",\n    \"description\":\"No description3\",\n    \"address\":\"ARGENTINA\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/plaintiff/add",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"plaintiff",
+								"add"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "PoliceMan",
+			"item": [
+				{
+					"name": "Add",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\":\"another police 3\",\n    \"family\":\" another family 3\",\n    \"personnel_code\":\"454\",\n    \"fathersName\":\"Abbbas \"\n    \n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/police-man/add",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"police-man",
+								"add"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get-busy-or-free",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/police-man/get-busy-or-free-polices/false",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"police-man",
+								"get-busy-or-free-polices",
+								"false"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Change police status",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/police-man/change-police-status/1/FREE",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"police-man",
+								"change-police-status",
+								"1",
+								"FREE"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"protocolProfileBehavior": {}
+}
