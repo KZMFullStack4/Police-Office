@@ -16,7 +16,11 @@
 	<description>Dummy Project Spring Boot Bicycle Challenge </description>
 
 	<properties>
+<<<<<<< HEAD
 		<java.version>1.8</java.version>
+=======
+		<java.version>11</java.version>
+>>>>>>> 0c48ffafc1b4e334702e8556e6efd00704b3bed2
 	</properties>
 
 	<dependencies>
@@ -29,11 +33,14 @@
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
 		<dependency>
+<<<<<<< HEAD
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-orm</artifactId>
 		</dependency>
 
 		<dependency>
+=======
+>>>>>>> 0c48ffafc1b4e334702e8556e6efd00704b3bed2
 			<groupId>org.threeten</groupId>
 			<artifactId>threetenbp</artifactId>
 			<version>0.7.2</version>

@@ -1,6 +1,9 @@
 package com.moshka;
 
+<<<<<<< HEAD
 import com.moshka.model.Car;
+=======
+>>>>>>> 0c48ffafc1b4e334702e8556e6efd00704b3bed2
 import com.zaxxer.hikari.HikariDataSource;
 import org.hibernate.SessionFactory;
 import org.slf4j.Logger;
@@ -13,6 +16,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.orm.jpa.HibernateJpaAutoConfiguration;
 import org.springframework.context.annotation.Bean;
 import org.springframework.core.env.Environment;
+<<<<<<< HEAD
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.orm.hibernate5.HibernateTransactionManager;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
@@ -20,12 +24,20 @@ import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+=======
+import org.springframework.orm.hibernate5.HibernateTransactionManager;
+import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
+
+>>>>>>> 0c48ffafc1b4e334702e8556e6efd00704b3bed2
 import javax.sql.DataSource;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Properties;
 
+<<<<<<< HEAD
 @EnableJpaRepositories(entityManagerFactoryRef = "sessionFactory")
+=======
+>>>>>>> 0c48ffafc1b4e334702e8556e6efd00704b3bed2
 @EnableAutoConfiguration(exclude = HibernateJpaAutoConfiguration.class)
 @SpringBootApplication
 public class BicycleChallengeApplication implements CommandLineRunner {
@@ -49,8 +61,12 @@ public class BicycleChallengeApplication implements CommandLineRunner {
 		LOGGER.info("## getDatasource : "+dataSource);
 		return dataSource;
 	}
+<<<<<<< HEAD
 	@Autowired
 	private EntityManager em;
+=======
+
+>>>>>>> 0c48ffafc1b4e334702e8556e6efd00704b3bed2
 	@Autowired
 	@Bean("sessionFactory")
 	public SessionFactory getSessionFactory(DataSource dataSource) throws IOException {
@@ -90,6 +106,7 @@ public class BicycleChallengeApplication implements CommandLineRunner {
 		return new SimpleDateFormat(DATE_FORMAT);
 	}
 
+<<<<<<< HEAD
 	@Transactional
 	@Override
 	public void run(String... args) throws Exception {
@@ -105,6 +122,10 @@ public class BicycleChallengeApplication implements CommandLineRunner {
 		myCar2.setModel("Model");
 		myCar2.setName("Name");
 		em.persist(myCar2);
+=======
+	@Override
+	public void run(String... args) throws Exception {
+>>>>>>> 0c48ffafc1b4e334702e8556e6efd00704b3bed2
 		LOGGER.info(" Application is running ..... Now " +
 				"\n ***** It should be consider we can add more attributes to our Models depending on our requirements ,Its Just Dummy " +
 				" for qualification purposes  **** ");
